@@ -1,82 +1,55 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- link rel="icon" href="favicon.ico"-->
+<!DOCTYPE HTML>
+<html>
+<style type="text/css">
 
-    <title>Sheetal Giri</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="./index_files/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="./index_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="./index_files/cover.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./index_files/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix>
-            <div class="inner">
-              <h3 class="masthead-brand">SG</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover">
-            <h1 class="cover-heading">Sheetal Giri</h1>
-            <p class="lead">Cheesy Line</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Void Link</a>
-            </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>2016</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./index_files/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="./index_files/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./index_files/ie10-viewport-bug-workaround.js"></script>
-  
-
-</body></html>
+	</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
+<script>
+		var a=[[{r:true,g:true},{r:false,g:false},{r:false,g:false}],[{r:false,g:false},{r:false,g:false},{r:false,g:false}],[{r:false,g:false},{r:false,g:false},{r:false,g:false}]];//r means reserved, g means girl
+		var sq_l=30;
+		var sq_b=60;
+		var row=0;
+		var column=0;
+		var seat=JSON.parse(JSON.stringify(a));;
+		function draw() {
+			var canvas = new fabric.Canvas('canvas');
+			canvas.hoverCursor = 'pointer';
+			canvas.selection=false;
+			for(i=0;i<a.length;i++){
+				for(j=0;j<a[i].length;j++){
+					  seat[i][j] = new fabric.Rect({
+					  left: row,
+					  top: column,
+					  fill: 'black',
+					  width: sq_l,
+					  height: sq_b,
+					  selectable:false
+					});
+					seat[i][j].r=i;
+					seat[i][j].c=j;
+					canvas.add(seat[i][j]);
+					row+=40;
+				}
+				column+=70;
+				row=0;
+			}
+			canvas.on('mouse:down', function(options) {
+				if(options.target){
+					r=options.target.r;
+					c=options.target.c;
+					if (!a[r][c].r){
+				  		a[r][c].r=true; 	
+						options.target.fill='yellow';			  
+				  	} 			  	
+				  	else{
+				  		a[r][c].r=false;
+				  		options.target.fill='black';
+				  	}
+				  	console.log(options.target)
+			  	}
+			});
+		}
+	</script> 
+ 
+<body onload="draw()"><canvas id="canvas" width="500px" height="500px"></canvas></body>
+</html>
