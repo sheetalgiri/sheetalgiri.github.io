@@ -1,55 +1,37 @@
-<!DOCTYPE HTML>
 <html>
 <style type="text/css">
 
 	</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
 <script>
-		var a=[[{r:true,g:true},{r:false,g:false},{r:false,g:false}],[{r:false,g:false},{r:false,g:false},{r:false,g:false}],[{r:false,g:false},{r:false,g:false},{r:false,g:false}]];//r means reserved, g means girl
-		var sq_l=30;
-		var sq_b=60;
-		var row=0;
-		var column=0;
-		var seat=JSON.parse(JSON.stringify(a));;
-		function draw() {
-			var canvas = new fabric.Canvas('canvas');
-			canvas.hoverCursor = 'pointer';
-			canvas.selection=false;
-			for(i=0;i<a.length;i++){
-				for(j=0;j<a[i].length;j++){
-					  seat[i][j] = new fabric.Rect({
-					  left: row,
-					  top: column,
-					  fill: 'black',
-					  width: sq_l,
-					  height: sq_b,
-					  selectable:false
-					});
-					seat[i][j].r=i;
-					seat[i][j].c=j;
-					canvas.add(seat[i][j]);
-					row+=40;
-				}
-				column+=70;
-				row=0;
-			}
-			canvas.on('mouse:down', function(options) {
-				if(options.target){
-					r=options.target.r;
-					c=options.target.c;
-					if (!a[r][c].r){
-				  		a[r][c].r=true; 	
-						options.target.fill='yellow';			  
-				  	} 			  	
-				  	else{
-				  		a[r][c].r=false;
-				  		options.target.fill='black';
-				  	}
-				  	console.log(options.target)
-			  	}
-			});
+	function draw(){
+		var canvas = new fabric.Canvas('canvas');
+		canvas.selection=false;
+		var row=0, column=0, sq_l=40, sq_b=60;
+		fabric.Image.fromURL('wheel.png', function(oImg) {
+		  canvas.add(oImg);
+		});
+
+		function newseat(){
+			var seat=new fabric.Rect({
+							  left: row,
+							  top: column,
+							  fill: 'black',
+							  width: sq_l,
+							  height: sq_b,
+							  strokeWidth:5,
+					  		  stroke:'white',
+					  		  borderColor:'black'
+							});
+			canvas.add(seat);
 		}
-	</script> 
- 
-<body onload="draw()"><canvas id="canvas" width="500px" height="500px"></canvas></body>
-</html>
+
+		newSeatButton=document.getElementById("newseat");
+		newSeatButton.addEventListener("click",newseat)
+
+	}
+
+	
+</script>
+<body onload='draw()'><canvas id="canvas" width="500px" height="500px"></canvas><button id="newseat">New Seat</button></body>
+</html>	
