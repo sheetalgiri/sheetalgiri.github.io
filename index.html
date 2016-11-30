@@ -2,14 +2,17 @@
 <head>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <style>
 
 body {
   padding: 5em;
   background: #e2e1e0;
-  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
+
 
 .card {
   background: #fff;
@@ -20,12 +23,23 @@ body {
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   overflow: hidden;
   padding: 0px;
-  background-color:#f2511f;
+  background-color:#E91E63;
   color: #fff;
+  text-align: center;
+  font-size: 0.5em;
+  cursor: pointer;
 }
 
 .card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card:hover .shop-menu{
+	display: block;
+}
+
+.card:hover .shop-info{
+	display: none;
 }
 
 .card div{
@@ -52,27 +66,96 @@ body {
 	position: absolute;
     text-align: center;
     max-width: 100%;
-    left: 45%;
-    top: 3rem;
+    font-size: 3em;
+    /*left: 45%;
+    top: 3rem;*/
+    left: 42%;
+    top: 2em;
     opacity: 0.8;
     filter: alpha(opacity=80);
 }
 
-.shop-id{
+.shop-id,.shop-address{
 	background-color: #515252;
 	margin: 0px;
 	padding: 5px;
 }
 
-.shop-tag{
-	margin: 0px;
+.shop-menu{
+	background-color: #fff;
+	display: none;
 }
+
+.shop-menu .table{
+	margin-bottom: 0px;
+}
+
+.shop-menu .table td {
+   text-align: center;   
+}
+
+.shop-loc{
+	position: absolute;
+}
+
+.shop-loc i{
+	position: relative;
+	right: 40%;
+    bottom: 0.5em;
+}
+
+.material-switch > input[type="checkbox"] {
+    visibility: hidden;   
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative; 
+    width: 40px;  
+}
+
+.material-switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+
 
 @media only screen and (min-width: 992px) {
     .status div{
     	max-width: 60%;
     	left: 55%;
     	top: 3rem;
+    	font-size: 1.25em;
     }
 }
 
@@ -81,6 +164,7 @@ body {
     	max-width: 100%;
     	left: 40%;
     	top: 3rem;
+    	font-size: 2em;
     }
 }
 
@@ -89,10 +173,38 @@ body {
     	max-width: 100%;
     	left: 45%;
     	top: 3rem;
+    	font-size: 1.5em;
     }
 }
+
 </style>
 <body>
+		<div class="row">
+			<div class="col-md-1">
+				<i class="fa fa-filter fa-3x" aria-hidden="true"></i>
+			</div>
+			<div class="col-md-2">
+				<div class="material-switch">
+                    Parking 
+                    <input id="parking" name="parking" type="checkbox"/>
+                    <label for="parking" class="label-danger"></label>
+                </div>
+            </div>
+			<div class="col-md-2">
+				<div class="material-switch">
+                    Verified
+                    <input id="verified" name="verified" type="checkbox"/>
+                    <label for="verified" class="label-success"></label>
+                </div>
+            </div>
+            <div class="col-md-2">
+				<div class="material-switch">
+                    Open
+                    <input id="open" name="open" type="checkbox"/>
+                    <label for="open" class="label-primary"></label>
+                </div>
+            </div>            
+		</div>
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-4">
 		 	   	<div class="card col-md-12">
@@ -103,13 +215,105 @@ body {
 		   			<div class="shop-ad">
 		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
 		   			</div>
-		   			<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   			<h5 class="shop-tag">Treat Your Beauty</h5>		   	
+		   			<div class="shop-rating">
+		   				<i class="fa fa-star fa-3x"></i>
+		   				<i class="fa fa-star fa-3x"></i>
+		   				<i class="fa fa-star fa-3x"></i>
+		   				<i class="fa fa-star fa-3x"></i>
+		   				<i class="fa fa-star fa-3x"></i>
+		   			</div>
+		   			<!--div class="shop-loc"><i class="fa fa-compass fa-3x" aria-hidden="true"></i></div-->
+		   			<div class="shop-menu">
+						<table class="table table-responsive">
+		                    <tr>
+		                   	<td>
+		                        <i class="fa fa-smile-o fa-3x"></i>
+		                    </td>
+
+		                    <td>
+		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
+		                        
+		                    </td>
+
+		                    <td>
+			                   	<i class="fa fa-comments fa-3x logo-text"></i>
+			                </td>
+		                    <td>
+		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
+		                    </td>
+
+		                    <td>
+		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
+		                    </td>
+		                    </tr>
+		                    <tr>
+		                    	<td>Open</td>
+		                    	<td>Parking</td>
+		                    	<td>Chat</td>
+		                    	<td>Location</td>
+		                    	<td>Jobs</td>
+		                    </tr>
+		                </table>
+	               </div>	
+	               <div class="shop-info">
+		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
+		   				<h5 class="shop-tag">Treat Your Beauty</h5>
+		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
+		   			</div>		   	
 		   		</div> 
  			</div>
 
- 			<div class="col-xs-12 col-sm-12 col-md-4">
-		 	   	<div class="card col-md-12">
+		  <div class="col-xs-12 col-sm-12 col-md-4">
+		 	   	<div class="card col-md-12" style="background-color:#03a9f4;">
+		   			<div class="status">
+		   				<div style="background-color:#ba4a52;">Not Verified</div>
+		   			</div>
+		   			<h4 class="shop-id">@DINSPARSH</h4>
+		   			<div class="shop-ad">
+		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
+		   			</div>
+		   			<div class="shop-menu">
+						<table class="table table-responsive">
+		                    <tr>
+		                   	<td>
+		                        <i class="fa fa-frown-o fa-3x"></i>
+		                    </td>
+
+		                    <td>
+		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
+		                        
+		                    </td>
+
+		                    <td>
+			                   	<i class="fa fa-comments fa-3x logo-text"></i>
+			                </td>
+		                    <td>
+		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
+		                    </td>
+
+		                    <td>
+		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
+		                    </td>
+		                    </tr>
+		                    <tr>
+		                    	<td>Closed</td>
+		                    	<td>Parking</td>
+		                    	<td>Chat</td>
+		                    	<td>Location</td>
+		                    	<td>Jobs</td>
+		                    </tr>
+		                </table>
+	               </div>	
+	               <div class="shop-info">
+		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
+		   				<h5 class="shop-tag">Treat Your Beauty</h5>
+		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
+		   			</div>		   	
+		   		</div> 
+ 			</div>
+
+		  <div class="col-xs-12 col-sm-12 col-md-4">
+		 	   	<div class="card col-md-12" style="background-color:#7db800;">
 		   			<div class="status">
 		   				<div>Verified</div>
 		   			</div>
@@ -117,23 +321,46 @@ body {
 		   			<div class="shop-ad">
 		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
 		   			</div>
-		   			<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   			<h5 class="shop-tag">Treat Your Beauty</h5>		   	
+		   			<div class="shop-menu">
+						<table class="table table-responsive">
+		                    <tr>
+		                   	<td>
+		                        <i class="fa fa-smile-o fa-3x logo-text"></i>
+		                    </td>
+
+		                    <td>
+		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
+		                        
+		                    </td>
+
+		                    <td>
+			                   	<i class="fa fa-comments fa-3x logo-text"></i>
+			                </td>
+		                    <td>
+		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
+		                    </td>
+
+		                    <td>
+		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
+		                    </td>
+		                    </tr>
+		                    <tr>
+		                    	<td>Open</td>
+		                    	<td>Parking</td>
+		                    	<td>Chat</td>
+		                    	<td>Location</td>
+		                    	<td>Jobs</td>
+		                    </tr>
+		                </table>
+	               </div>	
+	               <div class="shop-info">
+		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
+		   				<h5 class="shop-tag">Treat Your Beauty</h5>
+		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
+		   			</div>		   	
 		   		</div> 
  			</div>
- 			<div class="col-xs-12 col-sm-12 col-md-4">
-		 	   	<div class="card col-md-12">
-		   			<div class="status">
-		   				<div>Verified</div>
-		   			</div>
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>
-		   			<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   			<h5 class="shop-tag">Treat Your Beauty</h5>		   	
-		   		</div> 
- 			</div>
+
  		</div>
 </body>
 </html>
