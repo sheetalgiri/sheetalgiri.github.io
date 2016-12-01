@@ -25,14 +25,6 @@ body {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.card:hover .shop-menu{
-	display: block;
-}
-
-.card:hover .shop-info{
-	display: none;
-}
-
 .card div{
 	width: 100%;
 }
@@ -74,7 +66,6 @@ body {
 
 .shop-menu{
 	background-color: #fff;
-	display: none;
 }
 
 .shop-menu .table{
@@ -159,6 +150,19 @@ body {
     	top: 3rem;
     	font-size: 1.25em;
     }
+
+    .shop-menu{
+    	display:none;
+    }
+
+    .card:hover .shop-menu{
+		display: block;
+	}
+
+	.card:hover .shop-info{
+		display: none;
+	}
+
 }
 
 @media only screen and (min-width: 1200px) {
