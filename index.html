@@ -30,7 +30,7 @@ body {
   cursor: pointer;
 }
 
-.card:hover {
+.card:hover{
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -41,6 +41,14 @@ body {
 .shop-ad img{
 	height: auto;
 	width: 100%;
+}
+
+.shop-ad .discount{
+	background-color: red;
+	font-size: 2em;
+	position: absolute;
+	opacity: 0.7;
+    filter: alpha(opacity=70);
 }
 
 .status{
@@ -59,10 +67,8 @@ body {
     text-align: center;
     max-width: 100%;
     font-size: 3em;
-    /*left: 45%;
-    top: 3rem;*/
     left: 42%;
-    top: 2em;
+    top: -10em;
     opacity: 0.8;
     filter: alpha(opacity=80);
 }
@@ -75,14 +81,58 @@ body {
 
 .shop-menu{
 	background-color: #fff;
+	color:#000;
 }
 
-.shop-menu .table{
-	margin-bottom: 0px;
+.shop-menu .table {
+    margin-bottom: 0px;
 }
 
 .shop-menu .table td {
-   text-align: center;   
+    text-align: center;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.shop-menu .floating{
+	position: absolute;
+	background-color: #fff;
+	color:#515252;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	font-size: 1.25em;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	left: 1em;
+}
+
+.floating:hover{
+	box-shadow: 0 27px 38px rgba(0,0,0,0.25), 0 20px 20px rgba(0,0,0,0.22);
+}
+
+.shop-menu .floating i{
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.location{
+	top: 5em;
+}
+
+.chat{
+	top: 10em;
+}
+
+.job{
+	top: 15em;
+}
+
+.more{
+	top: 20em;
 }
 
 .shop-rating{
@@ -156,7 +206,7 @@ body {
     .status div{
     	max-width: 60%;
     	left: 55%;
-    	top: 3rem;
+    	top: -10em;
     	font-size: 1.25em;
     }
 
@@ -168,7 +218,7 @@ body {
 		display: block;
 	}
 
-	.card:hover .shop-info{
+	.card:hover .shop-extra{
 		display: none;
 	}
 
@@ -178,7 +228,7 @@ body {
     .status div{
     	max-width: 100%;
     	left: 40%;
-    	top: 3rem;
+    	top: -9em;
     	font-size: 2em;
     }
 }
@@ -187,7 +237,7 @@ body {
     .status div{
     	max-width: 100%;
     	left: 45%;
-    	top: 3rem;
+    	top: -9em;
     	font-size: 1.5em;
     }
 }
@@ -227,14 +277,14 @@ body {
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-4">
 		 	   	<div class="card col-md-12">
+		   			<h4 class="shop-id">@DINSPARSH</h4>
+		   			<div class="shop-ad">
+		   				<div class="discount">FLAT 10%</div>
+		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
+		   			</div>
 		   			<div class="status">
 		   				<div>Verified</div>
 		   			</div>
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>
-
 		   			<!--div class="shop-loc"><i class="fa fa-compass fa-3x" aria-hidden="true"></i></div-->
 	               <div class="shop-info">
 			   			<div class="shop-rating">
@@ -245,326 +295,47 @@ body {
 			   				<i class="fa fa-star fa-3x"></i>
 			   			</div>
 		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
+		   			</div>
+		   			<div class="shop-extra">
 		   				<h5 class="shop-tag">Treat Your Beauty</h5>
 		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
 		   			</div>
 		   			<div class="shop-menu">
-						<table class="table table-responsive">
-		                    <tr>
-		                   	<td>
-		                        <i class="fa fa-smile-o fa-3x"></i>
-		                    </td>
-
-		                    <td>
-		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
-		                        
-		                    </td>
-
-		                    <td>
-			                   	<i class="fa fa-comments fa-3x logo-text"></i>
-			                </td>
-		                    <td>
-		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
-		                    </td>
-
-		                    <td>
-		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
-		                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>Open</td>
-		                    	<td>Parking</td>
-		                    	<td>Chat</td>
-		                    	<td>Location</td>
-		                    	<td>Jobs</td>
-		                    </tr>
+						<table class=" table table-responsive">
+							<tr>
+								<td class="open">
+					                <i class="fa fa-smile-o fa-2x"></i>	
+					                <div>Open</div>
+					            </td>
+					            <td class="parking">
+				                	<div style="font-size:20px;">P</div>
+				                	<div>Parking</div>
+			    	            </td>
+			        	    </tr>
 		                </table>
+		                <div class="chat floating" data-container="body" data-placement="right" data-toggle="tooltip" title="Chat">
+			                <i class="fa fa-comment-o fa-3x"></i>
+		            	</div>
+			            <div class="location floating" data-container="body" data-placement="right" data-toggle="tooltip" title="Location">
+		                    <i class="fa fa-map-marker fa-3x"></i>
+		                </div>
+		                <div class="job floating" data-container="body" data-placement="right" data-toggle="tooltip" title="Jobs">
+		                    <i class="fa fa-black-tie fa-3x"></i>
+		                </div>
+		                <div class="more floating" data-container="body" data-placement="right" data-toggle="tooltip" title="More">
+		                    <i class="fa fa-info fa-3x"></i>
+		                </div>
 	               </div>			   	
 		   		</div> 
  			</div>
-
-		  <div class="col-xs-12 col-sm-12 col-md-4">
-		 	   	<div class="card col-md-12" style="background-color:#03a9f4;">
-		   			<div class="status">
-		   				<div style="background-color:#ba4a52;">Not Verified</div>
-		   			</div>
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>
-	               <div class="shop-info">
-	               		<div class="shop-rating">
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   			</div>
-		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   				<h5 class="shop-tag">Treat Your Beauty</h5>
-		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
-		   			</div>
-		   			<div class="shop-menu">
-						<table class="table table-responsive">
-		                    <tr>
-		                   	<td>
-		                        <i class="fa fa-smile-o fa-3x"></i>
-		                    </td>
-
-		                    <td>
-		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
-		                        
-		                    </td>
-
-		                    <td>
-			                   	<i class="fa fa-comments fa-3x logo-text"></i>
-			                </td>
-		                    <td>
-		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
-		                    </td>
-
-		                    <td>
-		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
-		                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>Open</td>
-		                    	<td>Parking</td>
-		                    	<td>Chat</td>
-		                    	<td>Location</td>
-		                    	<td>Jobs</td>
-		                    </tr>
-		                </table>
-	               </div>			   	
-		   		</div> 
- 			</div>
-
-		  <div class="col-xs-12 col-sm-12 col-md-4">
-		 	   	<div class="card col-md-12" style="background-color:#7db800;">
-		   			<div class="status">
-		   				<div>Verified</div>
-		   			</div>
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>
-   	               <div class="shop-info">
-		   				<div class="shop-rating">
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   			</div>
-		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   				<h5 class="shop-tag">Treat Your Beauty</h5>
-		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
-		   			</div>
-		   			<div class="shop-menu">
-						<table class="table table-responsive">
-		                    <tr>
-		                   	<td>
-		                        <i class="fa fa-smile-o fa-3x"></i>
-		                    </td>
-
-		                    <td>
-		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
-		                        
-		                    </td>
-
-		                    <td>
-			                   	<i class="fa fa-comments fa-3x logo-text"></i>
-			                </td>
-		                    <td>
-		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
-		                    </td>
-
-		                    <td>
-		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
-		                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>Open</td>
-		                    	<td>Parking</td>
-		                    	<td>Chat</td>
-		                    	<td>Location</td>
-		                    	<td>Jobs</td>
-		                    </tr>
-		                </table>
-	               </div>			   	
-		   		</div> 
- 			</div>
-
  		</div>
- 		<div class="row">
-		  <div class="col-xs-12 col-sm-12 col-md-4">
-		 	   	<div class="card col-md-12">
-		   			<div class="status">
-		   				<div>Verified</div>
-		   			</div>
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>	
-	               <div class="shop-info">
-			   			<div class="shop-rating">
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   			</div>
-		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   				<h5 class="shop-tag">Treat Your Beauty</h5>
-		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
-		   			</div>
-		   			<div class="shop-menu">
-						<table class="table table-responsive">
-		                    <tr>
-			                   	<td>
-			                        <i class="fa fa-smile-o fa-3x"></i>
-			                    </td>
 
-			                    <td>
-			                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
-			                        
-			                    </td>
-
-			                    <td>
-				                   	<i class="fa fa-comments fa-3x logo-text"></i>
-				                </td>
-			                    <td>
-			                        <i class="fa fa-map-marker fa-3x logo-text"></i>
-			                    </td>
-
-			                    <td>
-			                        <i class="fa fa-black-tie fa-3x logo-text"></i>
-			                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>Open</td>
-		                    	<td>Parking</td>
-		                    	<td>Chat</td>
-		                    	<td>Location</td>
-		                    	<td>Jobs</td>
-		                    </tr>
-		                </table>
-	               </div>			   	
-		   		</div> 
- 			</div>
-
-		  <div class="col-xs-12 col-sm-12 col-md-4">
-		 	   	<div class="card col-md-12" style="background-color:#03a9f4;">
-		   			<div class="status">
-		   				<div style="background-color:#ba4a52;">Not Verified</div>
-		   			</div>
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>
-	               <div class="shop-info">
-	               		<div class="shop-rating">
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   			</div>
-		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   				<h5 class="shop-tag">Treat Your Beauty</h5>
-		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
-		   			</div>
-		   			<div class="shop-menu">
-						<table class="table table-responsive">
-		                    <tr>
-		                   	<td>
-		                        <i class="fa fa-smile-o fa-3x"></i>
-		                    </td>
-
-		                    <td>
-		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
-		                        
-		                    </td>
-
-		                    <td>
-			                   	<i class="fa fa-comments fa-3x logo-text"></i>
-			                </td>
-		                    <td>
-		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
-		                    </td>
-
-		                    <td>
-		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
-		                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>Open</td>
-		                    	<td>Parking</td>
-		                    	<td>Chat</td>
-		                    	<td>Location</td>
-		                    	<td>Jobs</td>
-		                    </tr>
-		                </table>
-	               </div>			   	
-		   		</div> 
- 			</div>
-
-		  <div class="col-xs-12 col-sm-12 col-md-4">
-		 	   	<div class="card col-md-12" style="background-color:#7db800;">
-		   			<div class="status">
-		   				<div>Verified</div>
-		   			</div>
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>
-	               <div class="shop-info">
-		   				<div class="shop-rating">
-			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   				<i class="fa fa-star fa-3x"></i>
-			   			</div>
-		   				<h3 class="shop-name">Din Sparsh Adorn Beauty Service</h3>
-		   				<h5 class="shop-tag">Treat Your Beauty</h5>
-		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
-		   			</div>
-		   			<div class="shop-menu">
-						<table class="table table-responsive">
-		                    <tr>
-		                   	<td>
-		                        <i class="fa fa-smile-o fa-3x"></i>
-		                    </td>
-
-		                    <td>
-		                        <img src="https://www.ezeone.com/images/search/parking.a9226472.png">
-		                        
-		                    </td>
-
-		                    <td>
-			                   	<i class="fa fa-comments fa-3x logo-text"></i>
-			                </td>
-		                    <td>
-		                        <i class="fa fa-map-marker fa-3x logo-text"></i>
-		                    </td>
-
-		                    <td>
-		                        <i class="fa fa-black-tie fa-3x logo-text"></i>
-		                    </td>
-		                    </tr>
-		                    <tr>
-		                    	<td>Open</td>
-		                    	<td>Parking</td>
-		                    	<td>Chat</td>
-		                    	<td>Location</td>
-		                    	<td>Jobs</td>
-		                    </tr>
-		                </table>
-	               </div>			   	
-		   		</div> 
- 			</div>
-
- 		</div>
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 	<script type="text/javascript">
+	    $(function () {
+      		$('[data-toggle="tooltip"]').tooltip()
+    	})
+ 	</script>
 </body>
 </html>
