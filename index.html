@@ -21,7 +21,6 @@ body {
   margin:0 1em 5em 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  overflow: hidden;
   padding: 0px;
   background-color:#E91E63;
   color: #fff;
@@ -38,6 +37,10 @@ body {
 	width: 100%;
 }
 
+.card .header{
+	overflow: hidden;
+}
+
 .shop-ad img{
 	height: auto;
 	width: 100%;
@@ -47,8 +50,8 @@ body {
 	background-color: red;
 	font-size: 2em;
 	position: absolute;
-	opacity: 0.7;
-    filter: alpha(opacity=70);
+	opacity: 0.5;
+    filter: alpha(opacity=50);
 }
 
 .status{
@@ -58,9 +61,9 @@ body {
 }
 
 .status div{
-	-ms-transform: rotate(45deg); /* IE 9 */
-    -webkit-transform: rotate(45deg);
-	transform: rotate(45deg);
+	-ms-transform: rotate(-35deg); /* IE 9 */
+    -webkit-transform: rotate(-35deg);
+	transform: rotate(-35deg);
 	height: auto;
 	background-color: #549c35;
 	position: absolute;
@@ -79,39 +82,51 @@ body {
 	padding: 5px;
 }
 
+.shop-address{
+	line-height: 20px;
+	font-style: italic;
+}
+
+
 .shop-menu{
+	position: absolute;
+    left: 26em;
+    top: 3.5em;
+	display: inline-block;
 	background-color: #fff;
 	color:#000;
+	text-align: center;
+	font-size: 2em;
+	overflow: initial;
 }
 
-.shop-menu .table {
-    margin-bottom: 0px;
+.shop-menu>div{
+	padding:5px;
+	border-bottom: 1px solid #000; 
 }
 
-.shop-menu .table td {
-    text-align: center;
-    padding: 0px;
-    font-size: 14px;
+.shop-menu div div{
+	font-size: 0.7em; 
 }
 
-.shop-menu .floating{
+div.shop-menu{
+    width: auto;  
+}
+
+.floating{
 	position: absolute;
 	background-color: #fff;
 	color:#515252;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 	font-size: 1.25em;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	left: 1em;
 }
 
 .floating:hover{
 	box-shadow: 0 27px 38px rgba(0,0,0,0.25), 0 20px 20px rgba(0,0,0,0.22);
 }
 
-.shop-menu .floating i{
+.floating i{
 	position: absolute;
 	top: 50%;
     left: 50%;
@@ -120,19 +135,11 @@ body {
 }
 
 .location{
-	top: 5em;
-}
-
-.chat{
-	top: 10em;
-}
-
-.job{
 	top: 15em;
-}
-
-.more{
-	top: 20em;
+	left: 1em;
+	max-width: 40px;
+	height: 40px;
+	border-radius: 50%;
 }
 
 .shop-rating{
@@ -215,11 +222,7 @@ body {
     }
 
     .card:hover .shop-menu{
-		display: block;
-	}
-
-	.card:hover .shop-extra{
-		display: none;
+		display: inline-block;
 	}
 
 }
@@ -227,8 +230,8 @@ body {
 @media only screen and (min-width: 1200px) {
     .status div{
     	max-width: 100%;
-    	left: 40%;
-    	top: -9em;
+    	left: -11em;
+    	top: -10em;
     	font-size: 2em;
     }
 }
@@ -277,16 +280,21 @@ body {
 		<div class="row">
 		  <div class="col-xs-12 col-sm-12 col-md-4">
 		 	   	<div class="card col-md-12">
-		   			<h4 class="shop-id">@DINSPARSH</h4>
-		   			<div class="shop-ad">
-		   				<div class="discount">FLAT 10%</div>
-		   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
-		   			</div>
-		   			<div class="status">
-		   				<div>Verified</div>
+		 	   		<div class="header">
+			   			<h4 class="shop-id">@DINSPARSH</h4>
+			   			<div class="shop-ad">
+			   				<div class="discount">FLAT 10%</div>
+			   				<img src="https://storage.googleapis.com/ezeone/f9d1623c-881c-45bc-8811-6ee9e8f37ff6.png"/>
+			   			</div>
+			   			<div class="status">
+		   					<div>Verified</div>
+		   				</div>
 		   			</div>
 		   			<!--div class="shop-loc"><i class="fa fa-compass fa-3x" aria-hidden="true"></i></div-->
 	               <div class="shop-info">
+	               		<div class="floating location" data-container="body" data-placement="right" data-toggle="tooltip" title="Location">
+		                    <i class="fa fa-map-marker fa-3x"></i>
+		                </div>
 			   			<div class="shop-rating">
 			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
 			   				<i class="fa fa-star fa-3x" style="color:#fff;"></i>
@@ -298,34 +306,31 @@ body {
 		   			</div>
 		   			<div class="shop-extra">
 		   				<h5 class="shop-tag">Treat Your Beauty</h5>
-		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch</h5>
+		   				<h5 class="shop-address">#23,26th Main,Opp To Ragigudda Arch,Ragigudda,Ragigudda,Ragigudda</h5>
+		   				<h5>+91 9945232397 (M) +977 3243234 (P) sample@abc123.com (E) http://www.dinsparsh.com (W)</h5>
 		   			</div>
 		   			<div class="shop-menu">
-						<table class=" table table-responsive">
-							<tr>
-								<td class="open">
-					                <i class="fa fa-smile-o fa-2x"></i>	
-					                <div>Open</div>
-					            </td>
-					            <td class="parking">
-				                	<div style="font-size:20px;">P</div>
-				                	<div>Parking</div>
-			    	            </td>
-			        	    </tr>
-		                </table>
-		                <div class="chat floating" data-container="body" data-placement="right" data-toggle="tooltip" title="Chat">
-			                <i class="fa fa-comment-o fa-3x"></i>
-		            	</div>
-			            <div class="location floating" data-container="body" data-placement="right" data-toggle="tooltip" title="Location">
-		                    <i class="fa fa-map-marker fa-3x"></i>
-		                </div>
-		                <div class="job floating" data-container="body" data-placement="right" data-toggle="tooltip" title="Jobs">
-		                    <i class="fa fa-black-tie fa-3x"></i>
-		                </div>
-		                <div class="more floating" data-container="body" data-placement="right" data-toggle="tooltip" title="More">
-		                    <i class="fa fa-info fa-3x"></i>
-		                </div>
-	               </div>			   	
+						<div class="open">
+						    <i class="fa fa-smile-o fa-2x"></i>	
+						    <div>Open</div>
+						</div>
+						<div class="parking">
+							<div style="font-size:20px;">P</div>
+							<div>Parking</div>
+						</div>
+						<div class="chat">
+						    <i class="fa fa-comment-o fa-2x"></i>
+						    <div>Chat</div>
+						</div>
+						<div class="job">
+						    <i class="fa fa-black-tie fa-2x"></i>
+						    <div>Jobs</div>
+						</div>
+						<div class="more">
+						    <i class="fa fa-ellipsis-h fa-2x"></i>
+						    <div>More</div>
+						</div>
+	               </div>
 		   		</div> 
  			</div>
  		</div>
